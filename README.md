@@ -230,12 +230,3 @@
     <td><code>http://localhost:9080/api/facturas/ingresos?inicio=2026-01-01&fin=2026-12-31</code></td>
   </tr>
 </table>
-
----
-
-## 🚀 Despliegue y Ejecución del Proyecto
-
-### 1. Compilación Inicial (Raíz del Proyecto)
-Abre una terminal en la carpeta principal del ecosistema y descarga todas las dependencias necesarias:
-```bash
-mvn clean install -DskipTests
