@@ -56,112 +56,186 @@
 
 ---
 
-## ⚙️ Configuración de Base de Datos (MySQL)
+## 📋 Manual de Referencia de la API (Endpoints del Gateway)
 
-Cada microservicio gestiona su base de datos de forma aislada. Crea los siguientes esquemas en tu MySQL local antes de arrancar. **Liquibase creará las tablas y datos semilla automáticamente**:
+> ⚠️ **Nota de enrutamiento:** Todas las peticiones deben enviarse exclusivamente al puerto del **API Gateway (9080)**. El encabezado `Content-Type: application/json` es obligatorio para métodos POST y PUT.
 
-```sql
-CREATE DATABASE IF NOT EXISTS cdent_pacientes;
-CREATE DATABASE IF NOT EXISTS cdent_odontologos;
-CREATE DATABASE IF NOT EXISTS cdent_citas;
-CREATE DATABASE IF NOT EXISTS cdent_tratamientos;
-CREATE DATABASE IF NOT EXISTS cdent_facturas;
-📋 Manual de Referencia de la API (Endpoints del Gateway)
-⚠️ Nota: Todas las peticiones deben enviarse al puerto del API Gateway (9080) incluyendo el encabezado Content-Type: application/json.
+### 👥 1. Servicio de Pacientes
 
-👥 1. Servicio de Pacientes
-URL: http://localhost:9080/api/pacientes
-
-Cuerpo de la Petición (JSON):
-
-JSON
-{
+<table>
+  <tr>
+    <th align="left" width="150">Acción</th>
+    <th align="left" width="100">Método</th>
+    <th align="left">URL en Postman</th>
+  </tr>
+  <tr>
+    <td><b>Crear Paciente</b></td>
+    <td><img src="https://img.shields.io/badge/POST-green?style=flat-square" alt="POST"></td>
+    <td><code>http://localhost:9080/api/pacientes</code></td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <b>Cuerpo de la Petición (JSON):</b>
+<pre><code>{
   "nombres": "Juan Pablo",
   "apellidos": "Gómez Pérez",
   "cedula": "1725364728",
   "telefono": "+56987654321",
   "email": "juan.gomez@mail.com",
   "fechaNacimiento": "1990-05-15"
-}
-URL: http://localhost:9080/api/pacientes
+}</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td><b>Listar Pacientes</b></td>
+    <td><img src="https://img.shields.io/badge/GET-blue?style=flat-square" alt="GET"></td>
+    <td><code>http://localhost:9080/api/pacientes</code></td>
+  </tr>
+</table>
 
-🦷 2. Servicio de Odontólogos
-URL: http://localhost:9080/api/odontologos
+<br>
 
-Cuerpo de la Petición (JSON):
+### 🦷 2. Servicio de Odontólogos
 
-JSON
-{
+<table>
+  <tr>
+    <th align="left" width="150">Acción</th>
+    <th align="left" width="100">Método</th>
+    <th align="left">URL en Postman</th>
+  </tr>
+  <tr>
+    <td><b>Crear Odontólogo</b></td>
+    <td><img src="https://img.shields.io/badge/POST-green?style=flat-square" alt="POST"></td>
+    <td><code>http://localhost:9080/api/odontologos</code></td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <b>Cuerpo de la Petición (JSON):</b>
+<pre><code>{
   "nombres": "Ana María",
   "apellidos": "Silva Restrepo",
   "matricula": "ODONTO-2026-99A",
   "especialidad": "Endodoncia",
   "telefono": "+56911112222"
-}
-URL: http://localhost:9080/api/odontologos/1
+}</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td><b>Eliminar por ID</b></td>
+    <td><img src="https://img.shields.io/badge/DELETE-red?style=flat-square" alt="DELETE"></td>
+    <td><code>http://localhost:9080/api/odontologos/{id}</code></td>
+  </tr>
+</table>
 
-⚡ 3. Servicio de Tratamientos
-URL: http://localhost:9080/api/tratamientos
+<br>
 
-Cuerpo de la Petición (JSON):
+### ⚡ 3. Servicio de Tratamientos
 
-JSON
-{
+<table>
+  <tr>
+    <th align="left" width="150">Acción</th>
+    <th align="left" width="100">Método</th>
+    <th align="left">URL en Postman</th>
+  </tr>
+  <tr>
+    <td><b>Crear Tratamiento</b></td>
+    <td><img src="https://img.shields.io/badge/POST-green?style=flat-square" alt="POST"></td>
+    <td><code>http://localhost:9080/api/tratamientos</code></td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <b>Cuerpo de la Petición (JSON):</b>
+<pre><code>{
   "nombre": "Diseño de Sonrisa",
   "descripcion": "Procedimiento estético con carillas de porcelana",
   "costoBase": 1250.00,
   "duracionEstimadaMinutos": 120
-}
-📅 4. Servicio de Citas Médicas
-URL: http://localhost:9080/api/citas
+}</code></pre>
+    </td>
+  </tr>
+</table>
 
-Cuerpo de la Petición (JSON):
+<br>
 
-JSON
-{
+### 📅 4. Servicio de Citas Médicas
+
+<table>
+  <tr>
+    <th align="left" width="150">Acción</th>
+    <th align="left" width="100">Método</th>
+    <th align="left">URL en Postman</th>
+  </tr>
+  <tr>
+    <td><b>Agendar Cita</b></td>
+    <td><img src="https://img.shields.io/badge/POST-green?style=flat-square" alt="POST"></td>
+    <td><code>http://localhost:9080/api/citas</code></td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <b>Cuerpo de la Petición (JSON):</b>
+<pre><code>{
   "pacienteId": 1,
   "odontologoId": 3,
   "tratamientoId": 2,
   "fechaHora": "2026-06-15T14:30:00",
   "motivoConsulta": "Control preventivo general",
   "estado": "PROGRAMADA"
-}
-URL: http://localhost:9080/api/citas/1/estado
-
-Cuerpo de la Petición (JSON):
-
-JSON
-{
+}</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td><b>Cambiar Estado</b></td>
+    <td><img src="https://img.shields.io/badge/PUT-orange?style=flat-square" alt="PUT"></td>
+    <td><code>http://localhost:9080/api/citas/{id}/estado</code></td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <b>Cuerpo de la Petición (JSON):</b>
+<pre><code>{
   "nuevoEstado": "COMPLETADA"
-}
-💳 5. Servicio de Facturas
-URL: http://localhost:9080/api/facturas
+}</code></pre>
+    </td>
+  </tr>
+</table>
 
-Cuerpo de la Petición (JSON):
+<br>
 
-JSON
-{
+### 💳 5. Servicio de Facturas
+
+<table>
+  <tr>
+    <th align="left" width="150">Acción</th>
+    <th align="left" width="100">Método</th>
+    <th align="left">URL en Postman</th>
+  </tr>
+  <tr>
+    <td><b>Emitir Factura</b></td>
+    <td><img src="https://img.shields.io/badge/POST-green?style=flat-square" alt="POST"></td>
+    <td><code>http://localhost:9080/api/facturas</code></td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <b>Cuerpo de la Petición (JSON):</b>
+<pre><code>{
   "citaId": 1,
   "montoTotal": 450.00,
   "metodoPago": "TARJETA_CREDITO",
   "estado": "PAID"
-}
-URL: http://localhost:9080/api/facturas/ingresos?inicio=2026-01-01&fin=2026-12-31
+}</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td><b>Reporte Ingresos</b></td>
+    <td><img src="https://img.shields.io/badge/GET-blue?style=flat-square" alt="GET"></td>
+    <td><code>http://localhost:9080/api/facturas/ingresos?inicio=2026-01-01&fin=2026-12-31</code></td>
+  </tr>
+</table>
 
-🚀 Despliegue y Ejecución del Proyecto
-1. Compilación Inicial (Raíz)
-Bash
+---
+
+## 🚀 Despliegue y Ejecución del Proyecto
+
+### 1. Compilación Inicial (Raíz del Proyecto)
+Abre una terminal en la carpeta principal del ecosistema y descarga todas las dependencias necesarias:
+```bash
 mvn clean install -DskipTests
-2. Orden de Inicialización
-Inicia los microservicios core simultáneamente ejecutando el siguiente comando en sus respectivas carpetas:
-
-Bash
-mvn spring-boot:run
-Al final, levanta el componente api-gateway usando el mismo comando.
-
-🛠️ Buenas Prácticas Aplicadas
-Validación en Tiempo de Compilación: Consultas JPQL personalizadas mapeadas estrictamente a las Clases Entidad de Java (ej: Factura) respetando las mayúsculas exigidas por Hibernate 6.
-
-Enrutamiento Seguro: Implementación de un Gateway reactivo perimetral que evita la duplicación del contexto de la URL (/api/).
-
-Control de Entorno: Archivo .gitignore configurado rigurosamente a nivel raíz para prevenir la subida de datos temporales (/target) o configuraciones locales del IDE.
