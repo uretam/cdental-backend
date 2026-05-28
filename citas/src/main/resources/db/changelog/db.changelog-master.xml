@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="1-crear-tabla-citas" author="estudiante">
+        <createTable tableName="citas">
+            <column name="id_cita" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="id_paciente" type="BIGINT"/>
+            <column name="id_odontologo" type="BIGINT"/>
+            <column name="fecha_hora" type="TIMESTAMP"/>
+            <column name="motivo" type="VARCHAR(255)"/>
+            <column name="estado" type="VARCHAR(50)"/>
+            <column name="total_general" type="DECIMAL(10,2)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2-crear-tabla-detalle-citas" author="estudiante">
+        <createTable tableName="detalle_citas">
+            <column name="id_detalle" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="id_cita" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_treatment" type="BIGINT"/> <column name="cantidad" type="INT"/>
+            <column name="precio_unitario" type="DECIMAL(10,2)"/>
+            <column name="subtotal_linea" type="DECIMAL(10,2)"/>
+            <column name="descripcion_tratamiento" type="VARCHAR(255)"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="detalle_citas" baseColumnNames="id_cita"
+                                 constraintName="fk_detalle_cita_cabecera"
+                                 referencedTableName="citas" referencedColumnNames="id_cita"/>
+    </changeSet>
+
+    <changeSet id="3-insertar-10-citas-y-detalles" author="estudiante">
+        <insert tableName="citas"><column name="id_cita" valueNumeric="1"/><column name="id_paciente" valueNumeric="1"/><column name="id_odontologo" valueNumeric="1"/><column name="fecha_hora" value="2026-06-01 09:00:00"/><column name="motivo" value="Limpieza"/><column name="estado" value="PENDING"/><column name="total_general" valueNumeric="45000"/></insert>
+        <insert tableName="detalle_citas"><column name="id_cita" valueNumeric="1"/><column name="id_treatment" valueNumeric="1"/><column name="cantidad" valueNumeric="1"/><column name="precio_unitario" valueNumeric="45000"/><column name="subtotal_linea" valueNumeric="45000"/><column name="descripcion_tratamiento" value="Limpieza Profiláctica"/></insert>
+        
+        <insert tableName="citas"><column name="id_cita" valueNumeric="2"/><column name="id_paciente" valueNumeric="2"/><column name="id_odontologo" valueNumeric="2"/><column name="fecha_hora" value="2026-06-01 10:00:00"/><column name="motivo" value="Control"/><column name="estado" value="PENDING"/><column name="total_general" valueNumeric="30000"/></insert>
+        <insert tableName="detalle_citas"><column name="id_cita" valueNumeric="2"/><column name="id_treatment" valueNumeric="2"/><column name="cantidad" valueNumeric="1"/><column name="precio_unitario" valueNumeric="30000"/><column name="subtotal_linea" valueNumeric="30000"/><column name="descripcion_tratamiento" value="Consulta Diagnóstica"/></insert>
+
+        <insert tableName="citas"><column name="id_cita" valueNumeric="3"/><column name="id_paciente" valueNumeric="3"/><column name="id_odontologo" valueNumeric="3"/><column name="total_general" valueNumeric="15000"/><column name="estado" value="PENDING"/></insert>
+        <insert tableName="detalle_citas"><column name="id_cita" valueNumeric="3"/><column name="precio_unitario" valueNumeric="15000"/><column name="cantidad" valueNumeric="1"/><column name="subtotal_linea" valueNumeric="15000"/></insert>
+
+        <insert tableName="citas"><column name="id_cita" valueNumeric="4"/><column name="id_paciente" valueNumeric="4"/><column name="id_odontologo" valueNumeric="4"/><column name="total_general" valueNumeric="20000"/><column name="estado" value="PENDING"/></insert>
+        <insert tableName="detalle_citas"><column name="id_cita" valueNumeric="4"/><column name="precio_unitario" valueNumeric="20000"/><column name="cantidad" valueNumeric="1"/><column name="subtotal_linea" valueNumeric="20000"/></insert>
+
+        <insert tableName="citas"><column name="id_cita" valueNumeric="5"/><column name="id_paciente" valueNumeric="5"/><column name="id_odontologo" valueNumeric="5"/><column name="total_general" valueNumeric="20000"/><column name="estado" value="PENDING"/></insert>
+        <insert tableName="detalle_citas"><column name="id_cita" valueNumeric="5"/><column name="precio_unitario" valueNumeric="20000"/><column name="cantidad" valueNumeric="1"/><column name="subtotal_linea" valueNumeric="20000"/></insert>
+
+        <insert tableName="citas"><column name="id_cita" valueNumeric="6"/><column name="id_paciente" valueNumeric="6"/><column name="id_odontologo" valueNumeric="6"/><column name="total_general" valueNumeric="20000"/><column name="estado" value="PENDING"/></insert>
+        <insert tableName="detalle_citas"><column name="id_cita" valueNumeric="6"/><column name="precio_unitario" valueNumeric="20000"/><column name="cantidad" valueNumeric="1"/><column name="subtotal_linea" valueNumeric="20000"/></insert>
+
+        <insert tableName="citas"><column name="id_cita" valueNumeric="7"/><column name="id_paciente" valueNumeric="7"/><column name="id_odontologo" valueNumeric="7"/><column name="total_general" valueNumeric="20000"/><column name="estado" value="PENDING"/></insert>
+        <insert tableName="detalle_citas"><column name="id_cita" valueNumeric="7"/><column name="precio_unitario" valueNumeric="20000"/><column name="cantidad" valueNumeric="1"/><column name="subtotal_linea" valueNumeric="20000"/></insert>
+
+        <insert tableName="citas"><column name="id_cita" valueNumeric="8"/><column name="id_paciente" valueNumeric="8"/><column name="id_odontologo" valueNumeric="8"/><column name="total_general" valueNumeric="20000"/><column name="estado" value="PENDING"/></insert>
+        <insert tableName="detalle_citas"><column name="id_cita" valueNumeric="8"/><column name="precio_unitario" valueNumeric="20000"/><column name="cantidad" valueNumeric="1"/><column name="subtotal_linea" valueNumeric="20000"/></insert>
+
+        <insert tableName="citas"><column name="id_cita" valueNumeric="9"/><column name="id_paciente" valueNumeric="9"/><column name="id_odontologo" valueNumeric="9"/><column name="total_general" valueNumeric="20000"/><column name="estado" value="PENDING"/></insert>
+        <insert tableName="detalle_citas"><column name="id_cita" valueNumeric="9"/><column name="precio_unitario" valueNumeric="20000"/><column name="cantidad" valueNumeric="1"/><column name="subtotal_linea" valueNumeric="20000"/></insert>
+
+        <insert tableName="citas"><column name="id_cita" valueNumeric="10"/><column name="id_paciente" valueNumeric="10"/><column name="id_odontologo" valueNumeric="10"/><column name="total_general" valueNumeric="20000"/><column name="estado" value="PENDING"/></insert>
+        <insert tableName="detalle_citas"><column name="id_cita" valueNumeric="10"/><column name="precio_unitario" valueNumeric="20000"/><column name="cantidad" valueNumeric="1"/><column name="subtotal_linea" valueNumeric="20000"/></insert>
+    </changeSet>
+</databaseChangeLog>

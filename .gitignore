@@ -1,0 +1,16 @@
+# Carpetas de compilación de Maven
+**/target/
+*.jar
+*.war
+
+# Archivos de configuración del IDE (Eclipse, IntelliJ, NetBeans)
+**/.idea/
+*.iml
+**/.classpath
+**/.project
+**/.settings/
+**/nbproject/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

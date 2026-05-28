@@ -1,0 +1,32 @@
+server:
+  port: 9080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: ruta-pacientes
+          uri: http://localhost:9081
+          predicates:
+            - Path=/api/pacientes/**
+        - id: ruta-odontologos
+          uri: http://localhost:9083
+          predicates:
+            - Path=/api/odontologos/**
+
+        - id: ruta-tratamientos
+          uri: http://localhost:9084
+          predicates:
+            - Path=/api/tratamientos/**
+
+        - id: ruta-citas
+          uri: http://localhost:9082
+          predicates:
+            - Path=/api/citas/**
+
+        - id: ruta-facturas
+          uri: http://localhost:9085
+          predicates:
+            - Path=/api/facturas/**

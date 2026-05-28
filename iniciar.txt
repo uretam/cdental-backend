@@ -1,0 +1,8 @@
+pacientes
+odontologos
+tratamientos
+citas
+facturas
+api-gateway
+
+.\mvnw.cmd spring-boot:run

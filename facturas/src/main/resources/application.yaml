@@ -1,0 +1,15 @@
+server:
+  port: 9085
+
+spring:
+  application:
+    name: facturas
+  datasource:
+    url: jdbc:mysql://localhost:3306/cdent_facturas?serverTimezone=UTC&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

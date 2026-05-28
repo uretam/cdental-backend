@@ -1,0 +1,15 @@
+server:
+  port: 9084
+
+spring:
+  application:
+    name: tratamientos
+  datasource:
+    url: jdbc:mysql://localhost:3306/cdent_tratamientos?serverTimezone=UTC&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="1-crear-tabla-odontologos" author="estudiante">
+        <createTable tableName="odontologos">
+            <column name="id_odontologo" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="matricula" type="VARCHAR(50)"/>
+            <column name="nombres" type="VARCHAR(100)"/>
+            <column name="apellidos" type="VARCHAR(100)"/>
+            <column name="especialidad" type="VARCHAR(100)"/>
+            <column name="telefono" type="VARCHAR(20)"/>
+            <column name="activo" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2-insertar-10-odontologos" author="estudiante">
+        <insert tableName="odontologos"><column name="matricula" value="MAT-1"/><column name="nombres" value="Carlos"/><column name="apellidos" value="Mendoza"/><column name="especialidad" value="Ortodoncia"/><column name="telefono" value="+5691"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="odontologos"><column name="matricula" value="MAT-2"/><column name="nombres" value="Ana"/><column name="apellidos" value="Silva"/><column name="especialidad" value="Endodoncia"/><column name="telefono" value="+5692"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="odontologos"><column name="matricula" value="MAT-3"/><column name="nombres" value="Roberto"/><column name="apellidos" value="Torres"/><column name="especialidad" value="Odontopediatría"/><column name="telefono" value="+5693"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="odontologos"><column name="matricula" value="MAT-4"/><column name="nombres" value="Julia"/><column name="apellidos" value="Morales"/><column name="especialidad" value="Cirugía"/><column name="telefono" value="+5694"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="odontologos"><column name="matricula" value="MAT-5"/><column name="nombres" value="Oscar"/><column name="apellidos" value="Guzmán"/><column name="especialidad" value="General"/><column name="telefono" value="+5695"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="odontologos"><column name="matricula" value="MAT-6"/><column name="nombres" value="Patricia"/><column name="apellidos" value="Peña"/><column name="especialidad" value="Periodoncia"/><column name="telefono" value="+5696"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="odontologos"><column name="matricula" value="MAT-7"/><column name="nombres" value="Fernando"/><column name="apellidos" value="Ríos"/><column name="especialidad" value="Rehabilitación"/><column name="telefono" value="+5697"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="odontologos"><column name="matricula" value="MAT-8"/><column name="nombres" value="Sonia"/><column name="apellidos" value="Vargas"/><column name="especialidad" value="Ortodoncia"/><column name="telefono" value="+5698"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="odontologos"><column name="matricula" value="MAT-9"/><column name="nombres" value="Ricardo"/><column name="apellidos" value="Campos"/><column name="especialidad" value="General"/><column name="telefono" value="+5699"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="odontologos"><column name="matricula" value="MAT-10"/><column name="nombres" value="Marta"/><column name="apellidos" value="Fuentes"/><column name="especialidad" value="Endodoncia"/><column name="telefono" value="+5690"/><column name="activo" valueBoolean="true"/></insert>
+    </changeSet>
+</databaseChangeLog>

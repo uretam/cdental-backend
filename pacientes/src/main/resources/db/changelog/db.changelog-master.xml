@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="1-crear-tabla-pacientes" author="estudiante">
+        <createTable tableName="pacientes">
+            <column name="id_paciente" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="rut" type="VARCHAR(20)"/>
+            <column name="nombres" type="VARCHAR(100)"/>
+            <column name="apellidos" type="VARCHAR(100)"/>
+            <column name="fecha_nacimiento" type="DATE"/>
+            <column name="email" type="VARCHAR(100)"/>
+            <column name="telefono" type="VARCHAR(20)"/>
+            <column name="direccion" type="VARCHAR(200)"/>
+            <column name="activo" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2-insertar-10-pacientes" author="estudiante">
+        <insert tableName="pacientes"><column name="rut" value="11111111-1"/><column name="nombres" value="Juan"/><column name="apellidos" value="Pérez"/><column name="fecha_nacimiento" value="1990-05-12"/><column name="email" value="juan@mail.com"/><column name="telefono" value="+569111"/><column name="direccion" value="Av Chile 123"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="pacientes"><column name="rut" value="22222222-2"/><column name="nombres" value="María"/><column name="apellidos" value="López"/><column name="fecha_nacimiento" value="1985-08-22"/><column name="email" value="maria@mail.com"/><column name="telefono" value="+569222"/><column name="direccion" value="Los Olivos 456"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="pacientes"><column name="rut" value="33333333-3"/><column name="nombres" value="Andrés"/><column name="apellidos" value="Bello"/><column name="fecha_nacimiento" value="1993-01-30"/><column name="email" value="andres@mail.com"/><column name="telefono" value="+569333"/><column name="direccion" value="Plaza Sgto 789"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="pacientes"><column name="rut" value="44444444-4"/><column name="nombres" value="Ana"/><column name="apellidos" value="García"/><column name="fecha_nacimiento" value="1978-11-05"/><column name="email" value="ana@mail.com"/><column name="telefono" value="+569444"/><column name="direccion" value="Paseo Ahumada 55"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="pacientes"><column name="rut" value="55555555-5"/><column name="nombres" value="Luis"/><column name="apellidos" value="Martínez"/><column name="fecha_nacimiento" value="2000-02-14"/><column name="email" value="luis@mail.com"/><column name="telefono" value="+569555"/><column name="direccion" value="San Antonio 222"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="pacientes"><column name="rut" value="66666666-6"/><column name="nombres" value="Clara"/><column name="apellidos" value="Castro"/><column name="fecha_nacimiento" value="1995-07-19"/><column name="email" value="clara@mail.com"/><column name="telefono" value="+569666"/><column name="direccion" value="Providencia 1010"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="pacientes"><column name="rut" value="77777777-7"/><column name="nombres" value="Pedro"/><column name="apellidos" value="Soto"/><column name="fecha_nacimiento" value="1988-10-10"/><column name="email" value="pedro@mail.com"/><column name="telefono" value="+569777"/><column name="direccion" value="Apoquindo 4500"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="pacientes"><column name="rut" value="88888888-8"/><column name="nombres" value="Elena"/><column name="apellidos" value="Rojas"/><column name="fecha_nacimiento" value="1965-04-03"/><column name="email" value="elena@mail.com"/><column name="telefono" value="+569888"/><column name="direccion" value="Vitacura 980"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="pacientes"><column name="rut" value="99999999-9"/><column name="nombres" value="Diego"/><column name="apellidos" value="Herrera"/><column name="fecha_nacimiento" value="1992-12-25"/><column name="email" value="diego@mail.com"/><column name="telefono" value="+569999"/><column name="direccion" value="Las Condes 1230"/><column name="activo" valueBoolean="true"/></insert>
+        <insert tableName="pacientes"><column name="rut" value="12345678-9"/><column name="nombres" value="Lucía"/><column name="apellidos" value="Díaz"/><column name="fecha_nacimiento" value="2002-06-18"/><column name="email" value="lucia@mail.com"/><column name="telefono" value="+569123"/><column name="direccion" value="Alameda 400"/><column name="activo" valueBoolean="true"/></insert>
+    </changeSet>
+</databaseChangeLog>
